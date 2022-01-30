@@ -16,8 +16,7 @@
         </div>
         
     {% for post in posts %}
-    <!--Todo lo que pongas entre {% for %} y {% endfor %} se repetirá para cada objeto de la lista.
-    {{ post.title }} o {{ post.text }})? Estamos accediendo a los datos en cada uno de los campos definidos en nuestro modelo Post. También el |linebreaksbr está pasando el texto de los post a través de un filtro para convertir saltos de línea en párrafos.-->
+    
         <div>
           <p> publicado: {{ post.published_date }}</p>
           <h2><a href="">{{ post.title }}</a></h2>
