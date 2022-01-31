@@ -3,7 +3,7 @@
 #El punto antes de models indica el directorio actual o la aplicación actual. Ambos, views.py y models.py están en el mismo directorio. Esto significa
 #que podemos utilizar . y el nombre del archivo (sin .py). Ahora importamos el nombre del modelo (Post).
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from .models import Post
 
@@ -14,3 +14,7 @@ def post_list(request):
 #Lista de post publicados ordenados por published_date (fecha de publicación
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
+
+def post_detail (request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/post_detail.html', {'post': post})
